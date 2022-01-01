@@ -11,13 +11,12 @@ class StudentsController {
           res.status(200).json(response);
         
     }
-    store(req, res)
+    async store(req, res)
     {
-        const {nama} = req.body;
-        students.push(nama);
+      const student = await Students.create(req.body)
         const data = {
-            message: `Menambahkan data student: ${nama}`,
-            data: students,
+            message: `Menambahkan data student`,
+            data: student,
           };
           res.json(data);
     }
